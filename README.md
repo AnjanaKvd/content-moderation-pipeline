@@ -430,8 +430,6 @@ A production-grade ML inference API that classifies user comments for toxicity, 
 - Live: https://content-mod-ui.purpleocean-b34271aa.southeastasia.azurecontainerapps.io
 - Repo: https://github.com/AnjanaKvd/content-moderation-pipeline
 <!-- PORTFOLIO_END -->
-```
-
 ---
 
 *Stack: FastAPI · ONNX Runtime (toxic-bert) · Redis · Azure Container Apps · Azure Service Bus · KEDA · Application Insights · Streamlit · Docker · Bicep*
