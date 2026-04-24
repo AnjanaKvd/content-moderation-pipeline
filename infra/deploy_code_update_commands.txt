@@ -1,0 +1,11 @@
+# Rebuild & deploy both images
+.\infra\deploy_code_update.ps1 -BuildApiImage -BuildWorkerImage
+
+# Rebuild just the API
+.\infra\deploy_code_update.ps1 -BuildApiImage
+
+# Rebuild just the Worker
+.\infra\deploy_code_update.ps1 -BuildWorkerImage
+
+# Zero-downtime rolling update (just restarts containers with latest already-pushed image)
+.\infra\deploy_code_update.ps1
