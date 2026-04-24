@@ -402,22 +402,34 @@ content-moderation-pipeline/
 ```
 
 ---
-
-## Resume Bullet Points
-
-```
-• Built a content moderation API processing user comments for toxicity/hate speech
-  using ONNX Runtime (toxic-bert), achieving p95 latency of <220ms on CPU.
-
-• Reduced repeat inference cost by ~65% via SHA256-keyed Redis caching,
-  serving cached results in ~3ms during simulated bot spam waves.
-
-• Implemented async batch processing via Azure Service Bus + KEDA autoscaling,
-  enabling the API to accept 1,000-comment batches in <200ms while worker
-  containers scaled from 0→20 replicas to drain the queue.
-
-• Deployed on Azure Container Apps with real-time observability via
-  Application Insights (p95 latency, cache hit rate, error rate dashboards).
+<!-- PORTFOLIO_START -->
+## Enterprise Content Moderation Pipeline
+ 
+A production-grade ML inference API that classifies user comments for toxicity, hate speech, and spam — built to handle real-world traffic spikes using Azure-native autoscaling, Redis caching, and async batch processing.
+ 
+### Tech Stack
+- Python & FastAPI
+- ONNX Runtime (toxic-bert)
+- Azure Container Apps
+- Azure Cache for Redis
+- Azure Service Bus + KEDA
+- Azure Application Insights
+- Docker & Bicep (IaC)
+- Streamlit
+### Features
+- Classifies comments as `toxic` or `non_toxic` with confidence scores via ONNX Runtime — ~180ms CPU inference, no external API dependency
+- SHA256-keyed Redis caching returns repeated results in ~3ms, achieving ~65% cache hit rate during simulated bot spam waves
+- `POST /moderate/batch` accepts up to 1,000 comments and returns a `job_id` in under 200ms by offloading to Azure Service Bus
+- KEDA autoscaling spins worker containers from 0 → 20 replicas based on queue depth, then back to zero when the queue drains
+- Real-time observability via Application Insights — p95 latency, cache hit rate, and error rate dashboards
+- Streamlit demo UI with single-comment moderation, batch CSV upload, and live queue depth monitoring
+### Preview
+![Project Dashboard Screenshot](images/architecture.png)
+ 
+### Links
+- Live: https://content-mod-ui.purpleocean-b34271aa.southeastasia.azurecontainerapps.io
+- Repo: https://github.com/AnjanaKvd/content-moderation-pipeline
+<!-- PORTFOLIO_END -->
 ```
 
 ---
