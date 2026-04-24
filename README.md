@@ -403,8 +403,7 @@ content-moderation-pipeline/
 
 ---
 <!-- PORTFOLIO_START -->
-## Enterprise Content Moderation Pipeline
- 
+## Content Moderation Pipeline
 A production-grade ML inference API that classifies user comments for toxicity, hate speech, and spam — built to handle real-world traffic spikes using Azure-native autoscaling, Redis caching, and async batch processing.
  
 ### Tech Stack
