@@ -1,4 +1,4 @@
-# 🛡️ Enterprise Content Moderation Pipeline
+# Content Moderation Pipeline
 
 A production-grade ML inference API for detecting **toxicity, hate speech, and spam** in user-generated content — built to survive real-world traffic spikes without going down.
 
@@ -25,10 +25,10 @@ Built on Azure with FastAPI · ONNX Runtime · Redis · Azure Container Apps · 
 
 | Surface | URL |
 |---|---|
-| 🌐 **REST API + Swagger UI** | `https://your-api.azurecontainerapps.io/docs` |
-| 🖥️ **Streamlit Demo UI** | `https://your-ui.azurewebsites.net` |
+| 🌐 **REST API + Swagger UI** | `https://content-mod-api.purpleocean-b34271aa.southeastasia.azurecontainerapps.io/docs` |
+| 🖥️ **Streamlit Demo UI** | `https://content-mod-ui.purpleocean-b34271aa.southeastasia.azurecontainerapps.io` |
 
-> Tip for reviewers: hit the Swagger UI `/moderate` endpoint with `"I hate everyone"` vs `"Great product!"` to see the classifier in action.
+> Tip: hit the Swagger UI `/moderate` endpoint with `"I hate everyone"` vs `"Great product!"` to see the classifier in action.
 
 ---
 
@@ -132,7 +132,7 @@ Every classified comment is stored in Redis under a `SHA256` hash of the normali
 
 ![Azure Redis resource](images/2-compare-azure.png)
 
-> **Why this matters in production**: During a bot spam wave, the same toxic comment can arrive 10,000 times. With caching, we classify it once. The other 9,999 requests cost ~3ms each and zero GPU/CPU compute.
+> **Tip**: During a bot spam wave, the same toxic comment can arrive 10,000 times. With caching, we classify it once. The other 9,999 requests cost ~3ms each and zero GPU/CPU compute.
 
 ---
 
@@ -193,17 +193,6 @@ All resources provisioned in a single resource group via Bicep templates:
 | Azure Application Insights | Pay-as-you-go | p95 latency, error rates, custom metrics |
 | Log Analytics Workspace | Pay-as-you-go | Log aggregation for Container Apps |
 
-**Estimated monthly cost (demo scale):**
-
-| Resource | ~Cost/month |
-|---|---|
-| Redis Basic C0 | ~$16 |
-| Service Bus Standard | ~$10 |
-| Container Apps (at low traffic) | ~$5–15 |
-| App Insights + Log Analytics | ~$5 |
-| **Total** | **~$36–46/month** |
-
-> Scale down or delete the resource group after interviews to stop billing.
 
 ---
 
